@@ -1,0 +1,52 @@
+body {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+
+  .navbar {
+    width: 100%;
+    display: flex;
+    position: absolute;
+    padding: 1rem 3rem;
+    justify-content: space-between;
+
+    a {
+      color: $gray-color;
+      transition: 0.3s ease;
+
+      &:hover {
+        color: $pink-color;
+      }
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-transform: uppercase;
+      font-family: Impact, "Arial Narrow Bold", sans-serif;
+      font-size: 1.8rem;
+
+      span {
+        color: $orange-color;
+        background: $gradient-pink;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+      }
+
+      &:hover {
+        color: $blue-color;
+      }
+
+      img {
+        width: 50px;
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      padding-top: 0.5rem;
+    }
+  }
+}

@@ -1,0 +1,93 @@
+.main {
+  display: flex;
+  width: 100wv;
+  height: 100vh;
+
+  .headphones-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    img {
+      width: 300px;
+    }
+  }
+
+  .pink-side {
+    flex: 1;
+    background-color: $pink-color;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    h2 {
+      color: $white-color;
+      text-transform: uppercase;
+      font-size: 5rem;
+      font-weight: 600;
+      padding-left: 10%;
+    }
+  }
+
+  .blue-side {
+    flex: 1;
+    background-color: $blue-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .player {
+      width: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: left;
+      flex-direction: column;
+      margin-left: 15%;
+
+      h5 {
+        font-size: 1.5rem;
+        padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+      }
+
+      p {
+        font-size: 1.2rem;
+        padding: 0.5rem 1.5rem;
+      }
+
+      .music-waves {
+        width: 500px;
+      }
+
+      .player-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 1.5rem;
+
+        img {
+          width: 70px;
+          cursor: pointer;
+        }
+
+        .arrow-container {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 3rem;
+          cursor: pointer;
+
+          .arrow {
+            color: $white-color;
+            font-size: 3rem;
+            font-weight: 900;
+          }
+
+          p {
+            padding: 7px 5px 0px 5px;
+          }
+        }
+      }
+    }
+  }
+}
