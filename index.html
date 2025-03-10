@@ -34,20 +34,25 @@
       <div class="pink-side">
         <h2>
           Music <br />
-          On
+          <span id="onOff">OFF</span>
         </h2>
       </div>
       <div class="blue-side">
         <div class="player">
-          <h5>Song Title</h5>
-          <p>Artist</p>
+          <h5 id="currentTrackName">Song Title</h5>
+          <p id="currentTrackArtist">Artist</p>
           <img class="music-waves" src="./Assets/music-waves.png" alt="" />
           <div class="player-controls">
             <div class="arrow-container">
               <span class="arrow">&larr;</span>
               <p>Prev</p>
             </div>
-            <img src="./Assets/play-btn.png" alt="" />
+            <img
+              id="playImg"
+              class="play-button"
+              src="./Assets/play-btn.png"
+              alt=""
+            />
             <div class="arrow-container">
               <p>Next</p>
               <span class="arrow">&rarr;</span>
@@ -56,5 +61,6 @@
         </div>
       </div>
     </div>
+    <script src="./JS/script.js"></script>
   </body>
 </html>
