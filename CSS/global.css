@@ -207,6 +207,10 @@ body .navbar .nav-links {
   display: flex;
   justify-content: left;
   align-items: center;
+  transition: all 0.5s ease;
+}
+.main .pink-side.dark {
+  background-color: #e4858d;
 }
 .main .pink-side h2 {
   color: #fff;
@@ -250,6 +254,22 @@ body .navbar .nav-links {
 .main .blue-side .player .player-controls img {
   width: 70px;
   cursor: pointer;
+}
+.main .blue-side .player .player-controls .spinner {
+  width: 70px;
+  height: 70px;
+  border: 7px solid rgba(0, 0, 0, 0.1);
+  border-top-color: #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 .main .blue-side .player .player-controls .arrow-container {
   display: flex;

@@ -12,6 +12,9 @@ let currentTrackArtist = document.getElementById("currentTrackArtist");
 let playButton = document.querySelector(".play-button");
 let playImg = document.getElementById("playImg");
 let onOff = document.getElementById("onOff");
+let loadingSpinner = document.getElementById("loadingSpinner");
+
+const pinkSide = document.querySelector(".pink-side");
 
 const nextTrackBtn = document.getElementById("nextTrackBtn");
 const prevTrackBtn = document.getElementById("prevTrackBtn");
@@ -23,6 +26,7 @@ playButton.addEventListener("click", () => {
   if (!audio) {
     playTrack();
     onOff.innerText = "ON";
+    pinkSide.classList.remove("dark");
   } else {
     togglePlayback();
   }
@@ -36,12 +40,18 @@ function playTrack(track = null) {
 
   isFetching = true;
   nextTrackBtn.disabled = true;
+  loadingSpinner.style.display = "block";
+  playButton.style.display = "none";
+  currentTrackName.innerText = "🎵 Loading ...";
+  currentTrackArtist.innerText = "Please wait";
 
   if (track) {
     currentTrack = track;
     startPlayback();
     isFetching = false;
     nextTrackBtn.disabled = false;
+    loadingSpinner.style.display = "none";
+    playButton.style.display = "block";
     return;
   }
 
@@ -64,6 +74,8 @@ function playTrack(track = null) {
     .finally(() => {
       nextTrackBtn.disabled = false;
       isFetching = false;
+      loadingSpinner.style.display = "none";
+      playButton.style.display = "block";
     });
 }
 
@@ -80,11 +92,13 @@ function startPlayback() {
   currentTrackArtist.innerText = currentTrack.artist_name;
   playImg.src = "./Assets/pause-btn.png";
   onOff.innerText = "ON";
+  pinkSide.classList.remove("dark");
 
   audio.addEventListener("ended", () => {
     isPlaying = false;
     playImg.src = "./Assets/play-btn.png";
     onOff.innerText = "OFF";
+    pinkSide.classList.add("dark");
   });
 }
 
@@ -95,11 +109,13 @@ function togglePlayback() {
     audio.pause();
     isPlaying = false;
     onOff.innerText = "OFF";
+    pinkSide.classList.add("dark");
     playImg.src = "./Assets/play-btn.png";
   } else {
     audio.play();
     isPlaying = true;
     onOff.innerText = "ON";
+    pinkSide.classList.remove("dark");
     playImg.src = "./Assets/pause-btn.png";
   }
 }
