@@ -151,22 +151,24 @@ body .navbar {
   width: 100%;
   display: flex;
   position: absolute;
-  padding: 1rem 3rem;
-  justify-content: space-between;
+  padding: 0.7rem 3rem;
+}
+body .navbar.bg-dark {
+  background-color: rgba(0, 0, 0, 0.8) !important;
 }
 body .navbar a {
-  color: #333;
+  color: #ffaaad;
   transition: 0.3s ease;
 }
 body .navbar a:hover {
-  color: #ffaaad;
+  color: #a7fdfe;
 }
 body .navbar .logo {
   display: flex;
   align-items: center;
   text-transform: uppercase;
   font-family: Impact, "Arial Narrow Bold", sans-serif;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
 body .navbar .logo span {
   color: rgb(253, 29, 29);
@@ -179,18 +181,32 @@ body .navbar .logo:hover {
   color: #a7fdfe;
 }
 body .navbar .logo img {
-  width: 50px;
+  width: 40px;
 }
 body .navbar .nav-links {
+  width: 100%;
   display: flex;
+  justify-content: end;
   gap: 20px;
   padding-top: 0.5rem;
+}
+@media screen and (max-width: 991px) {
+  body .navbar .nav-links {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
 }
 
 .main {
   display: flex;
   width: 100wv;
   height: 100vh;
+}
+@media screen and (max-width: 992px) {
+  .main {
+    flex-direction: column;
+  }
 }
 .main .headphones-container {
   position: absolute;
@@ -201,6 +217,26 @@ body .navbar .nav-links {
 .main .headphones-container img {
   width: 300px;
 }
+@media screen and (max-width: 1200px) {
+  .main .headphones-container img {
+    width: 250px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .main .headphones-container img {
+    width: 200px;
+  }
+}
+@media screen and (max-height: 680px) {
+  .main .headphones-container img {
+    width: 150px;
+  }
+}
+@media screen and (max-height: 500px) {
+  .main .headphones-container img {
+    display: none;
+  }
+}
 .main .pink-side {
   flex: 1;
   background-color: #ffaaad;
@@ -208,6 +244,12 @@ body .navbar .nav-links {
   justify-content: left;
   align-items: center;
   transition: all 0.5s ease;
+}
+@media screen and (max-width: 992px) {
+  .main .pink-side {
+    justify-content: center;
+    text-align: center;
+  }
 }
 .main .pink-side.dark {
   background-color: #e4858d;
@@ -218,6 +260,22 @@ body .navbar .nav-links {
   font-size: 5rem;
   font-weight: 600;
   padding-left: 10%;
+}
+@media screen and (max-width: 992px) {
+  .main .pink-side h2 {
+    padding-left: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .main .pink-side h2 {
+    font-size: 4rem;
+  }
+}
+@media screen and (max-height: 500px) {
+  .main .pink-side h2 {
+    font-size: 2rem;
+    padding-top: 3.5rem;
+  }
 }
 .main .blue-side {
   flex: 1;
@@ -234,16 +292,74 @@ body .navbar .nav-links {
   flex-direction: column;
   margin-left: 15%;
 }
+@media screen and (max-width: 1360px) {
+  .main .blue-side .player {
+    width: 400px;
+    margin-left: 20%;
+  }
+}
+@media screen and (max-width: 1080px) {
+  .main .blue-side .player {
+    width: 350px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .main .blue-side .player {
+    margin-left: 0;
+    padding-top: 1.5rem;
+    width: 50%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .main .blue-side .player {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .main .blue-side .player {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 420px) {
+  .main .blue-side .player {
+    width: 90%;
+  }
+}
 .main .blue-side .player h5 {
   font-size: 1.5rem;
   padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+}
+@media screen and (max-width: 1360px) {
+  .main .blue-side .player h5 {
+    font-size: 1.2rem;
+  }
 }
 .main .blue-side .player p {
   font-size: 1.2rem;
   padding: 0.5rem 1.5rem;
 }
+@media screen and (max-width: 1360px) {
+  .main .blue-side .player p {
+    font-size: 1rem;
+  }
+}
 .main .blue-side .player .music-waves {
   width: 500px;
+}
+@media screen and (max-width: 1360px) {
+  .main .blue-side .player .music-waves {
+    width: 400px;
+  }
+}
+@media screen and (max-width: 1080px) {
+  .main .blue-side .player .music-waves {
+    width: 350px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .main .blue-side .player .music-waves {
+    width: 100%;
+  }
 }
 .main .blue-side .player .player-controls {
   display: flex;
@@ -255,6 +371,11 @@ body .navbar .nav-links {
   width: 70px;
   cursor: pointer;
 }
+@media screen and (max-width: 1360px) {
+  .main .blue-side .player .player-controls img {
+    width: 50px;
+  }
+}
 .main .blue-side .player .player-controls .spinner {
   width: 70px;
   height: 70px;
@@ -262,6 +383,14 @@ body .navbar .nav-links {
   border-top-color: #3498db;
   border-radius: 50%;
   animation: spin 1s linear infinite;
+}
+@media screen and (max-width: 1360px) {
+  .main .blue-side .player .player-controls .spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(0, 0, 0, 0.1);
+    border-top-color: #3498db;
+  }
 }
 @keyframes spin {
   from {

@@ -7,15 +7,18 @@ body {
     width: 100%;
     display: flex;
     position: absolute;
-    padding: 1rem 3rem;
-    justify-content: space-between;
+    padding: 0.7rem 3rem;
+
+    &.bg-dark {
+      background-color: rgba(0, 0, 0, 0.8) !important;
+    }
 
     a {
-      color: $gray-color;
+      color: $pink-color;
       transition: 0.3s ease;
 
       &:hover {
-        color: $pink-color;
+        color: $blue-color;
       }
     }
 
@@ -24,7 +27,7 @@ body {
       align-items: center;
       text-transform: uppercase;
       font-family: Impact, "Arial Narrow Bold", sans-serif;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
 
       span {
         color: $orange-color;
@@ -39,14 +42,22 @@ body {
       }
 
       img {
-        width: 50px;
+        width: 40px;
       }
     }
 
     .nav-links {
+      width: 100%;
       display: flex;
+      justify-content: end;
       gap: 20px;
       padding-top: 0.5rem;
+
+      @media screen and (max-width: 991px) {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+      }
     }
   }
 }

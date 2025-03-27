@@ -3,6 +3,10 @@
   width: 100wv;
   height: 100vh;
 
+  @media screen and (max-width: 992px) {
+    flex-direction: column;
+  }
+
   .headphones-container {
     position: absolute;
     top: 50%;
@@ -11,6 +15,22 @@
 
     img {
       width: 300px;
+
+      @media screen and (max-width: 1200px) {
+        width: 250px;
+      }
+
+      @media screen and (max-width: 768px) {
+        width: 200px;
+      }
+
+      @media screen and (max-height: 680px) {
+        width: 150px;
+      }
+
+      @media screen and (max-height: 500px) {
+        display: none;
+      }
     }
   }
 
@@ -22,6 +42,11 @@
     align-items: center;
     transition: all 0.5s ease;
 
+    @media screen and (max-width: 992px) {
+      justify-content: center;
+      text-align: center;
+    }
+
     &.dark {
       background-color: $dark-pink-color;
     }
@@ -32,6 +57,19 @@
       font-size: 5rem;
       font-weight: 600;
       padding-left: 10%;
+
+      @media screen and (max-width: 992px) {
+        padding-left: 0;
+      }
+
+      @media screen and (max-width: 768px) {
+        font-size: 4rem;
+      }
+
+      @media screen and (max-height: 500px) {
+        font-size: 2rem;
+        padding-top: 3.5rem;
+      }
     }
   }
 
@@ -50,18 +88,65 @@
       flex-direction: column;
       margin-left: 15%;
 
+      @media screen and (max-width: 1360px) {
+        width: 400px;
+        margin-left: 20%;
+      }
+
+      @media screen and (max-width: 1080px) {
+        width: 350px;
+      }
+
+      @media screen and (max-width: 992px) {
+        margin-left: 0;
+        padding-top: 1.5rem;
+        width: 50%;
+      }
+
+      @media screen and (max-width: 768px) {
+        width: 60%;
+      }
+
+      @media screen and (max-width: 600px) {
+        width: 80%;
+      }
+
+      @media screen and (max-width: 420px) {
+        width: 90%;
+      }
+
       h5 {
         font-size: 1.5rem;
         padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+
+        @media screen and (max-width: 1360px) {
+          font-size: 1.2rem;
+        }
       }
 
       p {
         font-size: 1.2rem;
         padding: 0.5rem 1.5rem;
+
+        @media screen and (max-width: 1360px) {
+          font-size: 1rem;
+        }
       }
 
       .music-waves {
         width: 500px;
+
+        @media screen and (max-width: 1360px) {
+          width: 400px;
+        }
+
+        @media screen and (max-width: 1080px) {
+          width: 350px;
+        }
+
+        @media screen and (max-width: 992px) {
+          width: 100%;
+        }
       }
 
       .player-controls {
@@ -73,6 +158,10 @@
         img {
           width: 70px;
           cursor: pointer;
+
+          @media screen and (max-width: 1360px) {
+            width: 50px;
+          }
         }
 
         .spinner {
@@ -82,6 +171,13 @@
           border-top-color: #3498db;
           border-radius: 50%;
           animation: spin 1s linear infinite;
+
+          @media screen and (max-width: 1360px) {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(0, 0, 0, 0.1);
+            border-top-color: #3498db;
+          }
         }
 
         @keyframes spin {
