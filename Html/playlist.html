@@ -30,7 +30,7 @@
   <body>
     <header>
       <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-        <a class="logo" href="./index.html"
+        <a class="logo" href="../index.html"
           ><img src="../Assets/logo.png" alt="" /> <span>MusApp</span></a
         >
         <button
@@ -64,7 +64,35 @@
     </header>
     <div class="main">
       <div class="pink-side dark"></div>
-      <div class="blue-side"></div>
+      <div class="blue-side">
+        <div class="player">
+          <h5 id="currentTrackName">&#127926; Press Play to Start</h5>
+          <p id="currentTrackArtist">Explore a World of Free Music</p>
+          <img class="music-waves" src="../Assets/music-waves.png" alt="" />
+          <div class="player-controls">
+            <div id="prevTrackBtn" class="arrow-container">
+              <span class="arrow">&larr;</span>
+              <p>Prev</p>
+            </div>
+            <img
+              id="playImg"
+              class="play-button"
+              src="../Assets/play-btn.png"
+              alt=""
+            />
+            <div
+              id="loadingSpinner"
+              class="spinner"
+              style="display: none"
+            ></div>
+            <div id="nextTrackBtn" class="arrow-container">
+              <p>Next</p>
+              <span class="arrow">&rarr;</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <script src="../JS/script.js"></script>
   </body>
 </html>

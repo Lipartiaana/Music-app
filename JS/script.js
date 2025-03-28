@@ -25,8 +25,10 @@ prevTrackBtn.addEventListener("click", playPrev);
 playButton.addEventListener("click", () => {
   if (!audio) {
     playTrack();
-    onOff.innerText = "ON";
-    pinkSide.classList.remove("dark");
+    if (onOff) {
+      onOff.innerText = "ON";
+      pinkSide.classList.remove("dark");
+    }
   } else {
     togglePlayback();
   }
@@ -90,15 +92,19 @@ function startPlayback() {
 
   currentTrackName.innerText = currentTrack.name;
   currentTrackArtist.innerText = currentTrack.artist_name;
-  playImg.src = "./Assets/pause-btn.png";
-  onOff.innerText = "ON";
-  pinkSide.classList.remove("dark");
+  playImg.src = getPauseButtonImage();
+  if (onOff) {
+    onOff.innerText = "ON";
+    pinkSide.classList.remove("dark");
+  }
 
   audio.addEventListener("ended", () => {
     isPlaying = false;
-    playImg.src = "./Assets/play-btn.png";
-    onOff.innerText = "OFF";
-    pinkSide.classList.add("dark");
+    playImg.src = getPlayButtonImage();
+    if (onOff) {
+      onOff.innerText = "OFF";
+      pinkSide.classList.add("dark");
+    }
   });
 }
 
@@ -108,15 +114,19 @@ function togglePlayback() {
   if (isPlaying) {
     audio.pause();
     isPlaying = false;
-    onOff.innerText = "OFF";
-    pinkSide.classList.add("dark");
-    playImg.src = "./Assets/play-btn.png";
+    if (onOff) {
+      onOff.innerText = "OFF";
+      pinkSide.classList.add("dark");
+    }
+    playImg.src = getPlayButtonImage();
   } else {
     audio.play();
     isPlaying = true;
-    onOff.innerText = "ON";
-    pinkSide.classList.remove("dark");
-    playImg.src = "./Assets/pause-btn.png";
+    if (onOff) {
+      onOff.innerText = "ON";
+      pinkSide.classList.remove("dark");
+    }
+    playImg.src = getPauseButtonImage();
   }
 }
 
@@ -143,5 +153,25 @@ function playPrev() {
     playTrack(previousTrack);
 
     prevTrackBtn.disabled = currentTrackIndex === 0;
+  }
+}
+
+function getPlayButtonImage() {
+  const path = window.location.pathname;
+
+  if (path === "/" || path.endsWith("index.html")) {
+    return "./Assets/play-btn.png";
+  } else {
+    return "../Assets/play-btn.png";
+  }
+}
+
+function getPauseButtonImage() {
+  const path = window.location.pathname;
+
+  if (path === "/" || path.endsWith("index.html")) {
+    return "./Assets/pause-btn.png";
+  } else {
+    return "../Assets/pause-btn.png";
   }
 }
