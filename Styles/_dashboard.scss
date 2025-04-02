@@ -51,6 +51,18 @@
       background-color: $dark-pink-color;
     }
 
+    &.with-heading {
+      flex-direction: column;
+      padding-top: 4.5rem;
+      flex: 3;
+      h3 {
+        color: $white-color;
+        text-transform: uppercase;
+        font-size: 3rem;
+        font-weight: 600;
+      }
+    }
+
     h2 {
       color: $white-color;
       text-transform: uppercase;
@@ -79,7 +91,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
     .player {
       width: 500px;
       display: flex;
@@ -206,6 +217,14 @@
             padding: 7px 5px 0px 5px;
           }
         }
+      }
+    }
+
+    &.with-cards {
+      flex: 2;
+
+      .player {
+        margin-left: 0;
       }
     }
   }

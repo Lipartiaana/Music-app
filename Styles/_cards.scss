@@ -1,0 +1,38 @@
+.cards-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+  padding: 10px;
+  gap: 10px;
+  place-items: center;
+
+  .artist-card,
+  .song-card {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width: 200px;
+    height: 250px;
+    padding: 20px 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 1rem;
+
+    img {
+      width: 160px;
+      margin-bottom: 20px;
+      border-radius: 15px;
+    }
+
+    p {
+      color: $pink-color;
+      text-align: center;
+
+      &.small-text {
+        margin-top: 5px;
+        font-size: 0.8rem;
+        opacity: 0.8;
+      }
+    }
+  }
+}

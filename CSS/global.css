@@ -254,6 +254,17 @@ body .navbar .nav-links {
 .main .pink-side.dark {
   background-color: #e4858d;
 }
+.main .pink-side.with-heading {
+  flex-direction: column;
+  padding-top: 4.5rem;
+  flex: 3;
+}
+.main .pink-side.with-heading h3 {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 3rem;
+  font-weight: 600;
+}
 .main .pink-side h2 {
   color: #fff;
   text-transform: uppercase;
@@ -414,4 +425,48 @@ body .navbar .nav-links {
 }
 .main .blue-side .player .player-controls .arrow-container p {
   padding: 7px 5px 0px 5px;
+}
+.main .blue-side.with-cards {
+  flex: 2;
+}
+.main .blue-side.with-cards .player {
+  margin-left: 0;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+  padding: 10px;
+  gap: 10px;
+  place-items: center;
+}
+.cards-container .artist-card,
+.cards-container .song-card {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 200px;
+  height: 250px;
+  padding: 20px 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 1rem;
+}
+.cards-container .artist-card img,
+.cards-container .song-card img {
+  width: 160px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+}
+.cards-container .artist-card p,
+.cards-container .song-card p {
+  color: #ffaaad;
+  text-align: center;
+}
+.cards-container .artist-card p.small-text,
+.cards-container .song-card p.small-text {
+  margin-top: 5px;
+  font-size: 0.8rem;
+  opacity: 0.8;
 }/*# sourceMappingURL=global.css.map */
