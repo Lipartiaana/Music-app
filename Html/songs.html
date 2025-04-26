@@ -17,6 +17,12 @@
       crossorigin="anonymous"
       defer
     ></script>
+    <!-- Swiper  -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -65,7 +71,13 @@
     <div class="main">
       <div class="pink-side dark with-heading">
         <h3>Songs</h3>
-        <div class="cards-container songs"></div>
+        <div class="swiper-container swiper">
+          <div class="swiper-wrapper cards-container songs"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+        <div class="cards-container-grid"></div>
       </div>
       <div class="blue-side with-cards">
         <div class="player">

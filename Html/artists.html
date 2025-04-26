@@ -24,6 +24,12 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+    <!-- Swiper  -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <!-- Global CSS -->
     <link rel="stylesheet" href="../CSS/global.css" />
   </head>
@@ -65,7 +71,13 @@
     <div class="main">
       <div class="pink-side dark with-heading">
         <h3>Artists</h3>
-        <div class="cards-container artists"></div>
+        <div class="swiper-container swiper">
+          <div class="swiper-wrapper cards-container artists"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+        <div class="cards-container-grid"></div>
       </div>
       <div class="blue-side with-cards">
         <div class="player">

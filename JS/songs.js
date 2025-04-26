@@ -1,4 +1,9 @@
 const songsContainer = document.querySelector(".songs");
+const songsContainerGrid = document.querySelector(".cards-container-grid");
+const swiperWrapper = document.querySelector(".swiper-wrapper");
+const swiperContainer = document.querySelector(".swiper-container");
+
+let swiperInstance = null;
 
 async function fetchPopularSongs() {
   try {
@@ -18,19 +23,80 @@ async function fetchPopularSongs() {
 }
 
 function displaySongs(songs) {
-  songsContainer.innerHTML = "";
+  songsContainerGrid.innerHTML = "";
+  swiperWrapper.innerHTML = "";
+
   songs.forEach((song) => {
-    const songCard = document.createElement("div");
-    songCard.className = "song-card";
+    // Grid card
+    const songCardGrid = document.createElement("div");
+    songCardGrid.className = "song-card";
 
-    const imgElement = document.createElement("img");
-    imgElement.src = song.image || "../Assets/alt-song.jpg";
-    imgElement.alt = song.name;
+    const imgElementGrid = document.createElement("img");
+    imgElementGrid.src = song.image || "../Assets/alt-song.jpg";
+    imgElementGrid.alt = song.name;
 
-    songCard.appendChild(imgElement);
-    songCard.innerHTML += `<p>${song.name}</p><p class="small-text">${song.artist_name}</p> `;
-    songsContainer.appendChild(songCard);
+    songCardGrid.appendChild(imgElementGrid);
+    songCardGrid.innerHTML += `<p>${song.name}</p><p class="small-text">${song.artist_name}</p>`;
+    songsContainerGrid.appendChild(songCardGrid);
+
+    // Swiper card
+    const songCardSwiper = document.createElement("div");
+    songCardSwiper.className = "song-card swiper-slide";
+
+    const imgElementSwiper = document.createElement("img");
+    imgElementSwiper.src = song.image || "../Assets/alt-song.jpg";
+    imgElementSwiper.alt = song.name;
+
+    songCardSwiper.appendChild(imgElementSwiper);
+    songCardSwiper.innerHTML += `<p>${song.name}</p><p class="small-text">${song.artist_name}</p>`;
+    swiperWrapper.appendChild(songCardSwiper);
   });
+
+  handleLayoutSwitch();
 }
 
+function handleLayoutSwitch() {
+  const isMobile = window.innerWidth <= 992;
+
+  if (isMobile) {
+    songsContainerGrid.style.display = "none";
+    swiperContainer.style.display = "block";
+
+    if (!swiperInstance) {
+      swiperInstance = new Swiper(".swiper-container", {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        breakpoints: {
+          700: {
+            slidesPerView: 3,
+          },
+          500: {
+            slidesPerView: 2,
+          },
+        },
+      });
+    }
+  } else {
+    songsContainerGrid.style.display = "grid";
+    swiperContainer.style.display = "none";
+
+    if (swiperInstance) {
+      swiperInstance.destroy(true, true);
+      swiperInstance = null;
+    }
+  }
+}
+
+// Initial fetch
 fetchPopularSongs();
+
+// Handle resize
+window.addEventListener("resize", handleLayoutSwitch);

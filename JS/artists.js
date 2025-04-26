@@ -1,9 +1,14 @@
 const artistsContainer = document.querySelector(".artists");
+const artistsContainerGrid = document.querySelector(".cards-container-grid");
+const swiperWrapper = document.querySelector(".swiper-wrapper");
+const swiperContainer = document.querySelector(".swiper-container");
+
+let swiperInstance = null;
 
 async function fetchPopularArtists() {
   try {
     const response = await fetch(
-      `https://api.jamendo.com/v3.0/artists/?client_id=${JAMENDO_API_KEY}&format=json&limit=9&order=popularity_total&limit=9&hasimage=true`
+      `https://api.jamendo.com/v3.0/artists/?client_id=${JAMENDO_API_KEY}&format=json&limit=9&order=popularity_total&hasimage=true`
     );
     const data = await response.json();
 
@@ -18,19 +23,80 @@ async function fetchPopularArtists() {
 }
 
 function displayArtists(artists) {
-  artistsContainer.innerHTML = "";
+  artistsContainerGrid.innerHTML = "";
+  swiperWrapper.innerHTML = "";
+
   artists.forEach((artist) => {
-    const artistCard = document.createElement("div");
-    artistCard.className = "artist-card";
+    // Grid card
+    const artistCardGrid = document.createElement("div");
+    artistCardGrid.className = "artist-card";
 
-    const imgElement = document.createElement("img");
-    imgElement.src = artist.image || "../Assets/alt-song.jpg";
-    imgElement.alt = artist.name;
+    const imgElementGrid = document.createElement("img");
+    imgElementGrid.src = artist.image || "../Assets/alt-song.jpg";
+    imgElementGrid.alt = artist.name;
 
-    artistCard.appendChild(imgElement);
-    artistCard.innerHTML += `<p>${artist.name}</p>`;
-    artistsContainer.appendChild(artistCard);
+    artistCardGrid.appendChild(imgElementGrid);
+    artistCardGrid.innerHTML += `<p>${artist.name}</p>`;
+    artistsContainerGrid.appendChild(artistCardGrid);
+
+    // Swiper card
+    const artistCardSwiper = document.createElement("div");
+    artistCardSwiper.className = "artist-card swiper-slide";
+
+    const imgElementSwiper = document.createElement("img");
+    imgElementSwiper.src = artist.image || "../Assets/alt-song.jpg";
+    imgElementSwiper.alt = artist.name;
+
+    artistCardSwiper.appendChild(imgElementSwiper);
+    artistCardSwiper.innerHTML += `<p>${artist.name}</p>`;
+    swiperWrapper.appendChild(artistCardSwiper);
   });
+
+  handleLayoutSwitch();
 }
 
+function handleLayoutSwitch() {
+  const isMobile = window.innerWidth <= 992;
+
+  if (isMobile) {
+    artistsContainerGrid.style.display = "none";
+    swiperContainer.style.display = "block";
+
+    if (!swiperInstance) {
+      swiperInstance = new Swiper(".swiper-container", {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        breakpoints: {
+          700: {
+            slidesPerView: 3,
+          },
+          500: {
+            slidesPerView: 2,
+          },
+        },
+      });
+    }
+  } else {
+    artistsContainerGrid.style.display = "grid";
+    swiperContainer.style.display = "none";
+
+    if (swiperInstance) {
+      swiperInstance.destroy(true, true);
+      swiperInstance = null;
+    }
+  }
+}
+
+// Initial fetch
 fetchPopularArtists();
+
+// Handle resize
+window.addEventListener("resize", handleLayoutSwitch);
