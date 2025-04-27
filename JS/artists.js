@@ -8,7 +8,7 @@ let swiperInstance = null;
 async function fetchPopularArtists() {
   try {
     const response = await fetch(
-      `https://api.jamendo.com/v3.0/artists/?client_id=${JAMENDO_API_KEY}&format=json&limit=9&order=popularity_total&hasimage=true`
+      `https://api.jamendo.com/v3.0/artists/?client_id=${JAMENDO_API_KEY}&format=json&limit=50&order=popularity_total&hasimage=true`
     );
     const data = await response.json();
 
@@ -26,7 +26,19 @@ function displayArtists(artists) {
   artistsContainerGrid.innerHTML = "";
   swiperWrapper.innerHTML = "";
 
+  const cutoffDate = new Date("2024-09-01");
+
+  let artistsCount = 0;
+
   artists.forEach((artist) => {
+    if (artistsCount >= 9) {
+      return;
+    }
+    const artistJoinDate = new Date(artist.joindate);
+
+    if (artistJoinDate < cutoffDate || !artist.image) {
+      return;
+    }
     // Grid card
     const artistCardGrid = document.createElement("div");
     artistCardGrid.className = "artist-card";
@@ -50,6 +62,8 @@ function displayArtists(artists) {
     artistCardSwiper.appendChild(imgElementSwiper);
     artistCardSwiper.innerHTML += `<p>${artist.name}</p>`;
     swiperWrapper.appendChild(artistCardSwiper);
+
+    artistsCount++;
   });
 
   handleLayoutSwitch();

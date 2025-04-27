@@ -450,6 +450,7 @@ body .navbar .nav-links {
   padding: 10px;
   width: 100%;
   max-width: 800px;
+  place-items: center;
 }
 @media screen and (max-width: 992px) {
   .cards-container-grid {
