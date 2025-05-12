@@ -7,6 +7,9 @@ let currentTrack = null;
 let trackHistory = [];
 let currentTrackIndex = -1;
 
+let songsList = [];
+let songsListIndex = -1;
+
 let currentTrackName = document.getElementById("currentTrackName");
 let currentTrackArtist = document.getElementById("currentTrackArtist");
 let playButton = document.querySelector(".play-button");
@@ -19,12 +22,22 @@ const pinkSide = document.querySelector(".pink-side");
 const nextTrackBtn = document.getElementById("nextTrackBtn");
 const prevTrackBtn = document.getElementById("prevTrackBtn");
 
-nextTrackBtn.addEventListener("click", playNext);
-prevTrackBtn.addEventListener("click", playPrev);
+if (nextTrackBtn) {
+  nextTrackBtn.addEventListener("click", playNext);
+}
+
+if (prevTrackBtn) {
+  prevTrackBtn.addEventListener("click", playPrev);
+}
 
 playButton.addEventListener("click", () => {
   if (!audio) {
-    playTrack();
+    if (songsList && songsList.length > 0) {
+      songsListIndex = 0;
+      playTrack(songsList[0]);
+    } else {
+      playTrack(); // fallback to random if no song list
+    }
     if (onOff) {
       onOff.innerText = "ON";
       pinkSide.classList.remove("dark");
@@ -41,17 +54,31 @@ function playTrack(track = null) {
   }
 
   isFetching = true;
-  nextTrackBtn.disabled = true;
+  if (nextTrackBtn) {
+    nextTrackBtn.disabled = true;
+  }
   loadingSpinner.style.display = "block";
   playButton.style.display = "none";
   currentTrackName.innerText = "🎵 Loading ...";
   currentTrackArtist.innerText = "Please wait";
 
+  if (!track && songsList && songsList.length > 0) {
+    currentTrackIndex = 0;
+    currentTrack = songsList[0];
+    startPlayback();
+    isFetching = false;
+    loadingSpinner.style.display = "none";
+    playButton.style.display = "block";
+    return;
+  }
+
   if (track) {
     currentTrack = track;
     startPlayback();
     isFetching = false;
-    nextTrackBtn.disabled = false;
+    if (nextTrackBtn) {
+      nextTrackBtn.disabled = false;
+    }
     loadingSpinner.style.display = "none";
     playButton.style.display = "block";
     return;

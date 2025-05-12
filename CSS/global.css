@@ -263,7 +263,7 @@ body .navbar .nav-links {
 .main .pink-side.with-heading h3 {
   color: #fff;
   text-transform: uppercase;
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 600;
 }
 .main .pink-side h2 {
@@ -471,6 +471,7 @@ body .navbar .nav-links {
   padding: 20px 10px;
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 1rem;
+  cursor: pointer;
 }
 @media screen and (max-width: 1360px) {
   .artist-card,

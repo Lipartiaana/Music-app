@@ -3,6 +3,12 @@ const songsContainerGrid = document.querySelector(".cards-container-grid");
 const swiperWrapper = document.querySelector(".swiper-wrapper");
 const swiperContainer = document.querySelector(".swiper-container");
 
+const songsNextBtn = document.getElementById("songsNextBtn");
+const songsPrevBtn = document.getElementById("songsPrevBtn");
+
+songsNextBtn.addEventListener("click", playNextFromList);
+songsPrevBtn.addEventListener("click", playPrevFromList);
+
 let swiperInstance = null;
 
 async function fetchPopularSongs() {
@@ -39,7 +45,9 @@ function displaySongs(songs) {
     if (artistJoinDate < cutoffDate || !song.image) {
       return;
     }
-    console.log(song);
+
+    const index = songsList.length;
+
     // Grid card
     const songCardGrid = document.createElement("div");
     songCardGrid.className = "song-card";
@@ -65,9 +73,35 @@ function displaySongs(songs) {
     swiperWrapper.appendChild(songCardSwiper);
 
     songsCount++;
+
+    songsList.push(song);
+
+    songCardGrid.addEventListener("click", () => {
+      songsListIndex = index;
+      playTrack(song);
+    });
+
+    songCardSwiper.addEventListener("click", () => {
+      songsListIndex = index;
+      playTrack(song);
+    });
   });
 
   handleLayoutSwitch();
+}
+
+function playNextFromList() {
+  if (songsListIndex < songsList.length - 1) {
+    songsListIndex++;
+    playTrack(songsList[songsListIndex]);
+  }
+}
+
+function playPrevFromList() {
+  if (songsListIndex > 0) {
+    songsListIndex--;
+    playTrack(songsList[songsListIndex]);
+  }
 }
 
 function handleLayoutSwitch() {
