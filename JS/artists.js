@@ -5,6 +5,10 @@ const swiperContainer = document.querySelector(".swiper-container");
 
 let swiperInstance = null;
 
+function isMobile() {
+  return window.innerWidth <= 992;
+}
+
 async function fetchPopularArtists() {
   try {
     const response = await fetch(
@@ -70,9 +74,7 @@ function displayArtists(artists) {
 }
 
 function handleLayoutSwitch() {
-  const isMobile = window.innerWidth <= 992;
-
-  if (isMobile) {
+  if (isMobile()) {
     artistsContainerGrid.style.display = "none";
     swiperContainer.style.display = "block";
 

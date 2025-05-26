@@ -52,6 +52,15 @@
       background-color: $dark-pink-color;
     }
 
+    .go-back-arrow {
+      float: left;
+      text-align: left;
+      width: 95%;
+      color: $white-color;
+      cursor: pointer;
+      display: none;
+    }
+
     &.with-heading {
       flex-direction: column;
       padding-top: 4.5rem;

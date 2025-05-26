@@ -255,6 +255,14 @@ body .navbar .nav-links {
 .main .pink-side.dark {
   background-color: #e4858d;
 }
+.main .pink-side .go-back-arrow {
+  float: left;
+  text-align: left;
+  width: 95%;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+}
 .main .pink-side.with-heading {
   flex-direction: column;
   padding-top: 4.5rem;
@@ -505,4 +513,61 @@ body .navbar .nav-links {
   margin-top: 5px;
   font-size: 0.8rem;
   opacity: 0.8;
+}
+
+.artist-portfolio {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 1rem;
+  display: none;
+}
+.artist-portfolio .artist-portfolio-img {
+  width: 250px;
+  height: 250px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 1rem;
+  margin: 1rem;
+}
+.artist-portfolio .artist-songs-list {
+  width: 95%;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 1rem;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+.artist-portfolio .artist-songs-list tr {
+  width: 100%;
+}
+.artist-portfolio .artist-songs-list tr .artist-song-play-btn {
+  width: 15%;
+}
+.artist-portfolio .artist-songs-list tr .artist-song-number {
+  width: 5%;
+}
+.artist-portfolio .artist-songs-list tr .artist-song-img {
+  width: 15%;
+}
+.artist-portfolio .artist-songs-list tr .artist-song-name {
+  width: 45%;
+}
+.artist-portfolio .artist-songs-list tr .artist-song-duration {
+  width: 20%;
+}
+.artist-portfolio .artist-songs-list tr td {
+  color: #fff;
+  padding: 1rem;
+  height: 50px;
+  text-align: center;
+  vertical-align: middle;
+}
+.artist-portfolio .artist-songs-list tr td img {
+  width: 50px;
+  border-radius: 6px;
+}
+.artist-portfolio .artist-songs-list tr td img.artist-song-play-btn {
+  cursor: pointer;
 }/*# sourceMappingURL=global.css.map */
