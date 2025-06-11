@@ -3,7 +3,7 @@
     display: block;
     width: 100%;
     max-width: 700px;
-    margin-top: 2rem;
+    margin-top: 1.2rem;
   }
 }
 
@@ -21,6 +21,10 @@
     gap: 0;
     padding: 0;
   }
+
+  @media screen and (max-height: 1000px) and (min-width: 993px) {
+    gap: 10px;
+  }
 }
 
 .artist-card,
@@ -30,7 +34,7 @@
   align-items: center;
   flex-direction: column;
   width: 200px;
-  height: 250px;
+  height: 240px;
   padding: 20px 10px;
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 1rem;
@@ -38,6 +42,12 @@
 
   @media screen and (max-width: 1360px) {
     width: 190px;
+  }
+
+  @media screen and (max-height: 1000px) and (min-width: 993px) {
+    width: 190px;
+    height: 155px;
+    padding: 10px;
   }
 
   &.swiper-slide {
@@ -52,6 +62,13 @@
     @media screen and (max-width: 1080px) {
       width: 150px;
     }
+
+    @media screen and (max-height: 1000px) and (min-width: 993px) {
+      height: 100px;
+      width: 140px;
+      object-fit: cover;
+      margin-bottom: 5px;
+    }
   }
 
   p {
@@ -62,6 +79,10 @@
       margin-top: 5px;
       font-size: 0.8rem;
       opacity: 0.8;
+
+      @media screen and (max-height: 1000px) and (min-width: 993px) {
+        font-size: 0.7rem;
+      }
     }
   }
 }

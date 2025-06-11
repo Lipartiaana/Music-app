@@ -54,6 +54,7 @@ function displayArtists(artists) {
     artistCardGrid.appendChild(imgElementGrid);
     artistCardGrid.innerHTML += `<p>${artist.name}</p>`;
     artistsContainerGrid.appendChild(artistCardGrid);
+    artistCardGrid.addEventListener("click", () => showPortfolio(artist));
 
     // Swiper card
     const artistCardSwiper = document.createElement("div");
@@ -66,6 +67,7 @@ function displayArtists(artists) {
     artistCardSwiper.appendChild(imgElementSwiper);
     artistCardSwiper.innerHTML += `<p>${artist.name}</p>`;
     swiperWrapper.appendChild(artistCardSwiper);
+    artistCardSwiper.addEventListener("click", () => showPortfolio(artist));
 
     artistsCount++;
   });
@@ -74,6 +76,12 @@ function displayArtists(artists) {
 }
 
 function handleLayoutSwitch() {
+  const artistPortfolio = document.querySelector(".artist-portfolio");
+
+  if (artistPortfolio && artistPortfolio.style.display === "flex") {
+    return;
+  }
+
   if (isMobile()) {
     artistsContainerGrid.style.display = "none";
     swiperContainer.style.display = "block";
