@@ -4,6 +4,11 @@ const cardsContainerGrid = document.querySelector(".cards-container-grid");
 const artistPageTitle = document.querySelector(".artist-heading");
 const artistPotfolioImg = document.querySelector(".artist-portfolio-img");
 const tableContainer = document.querySelector(".artist-songs-wrapper");
+const artistNextBtn = document.getElementById("artistNextBtn");
+const artistPrevBtn = document.getElementById("artistPrevBtn");
+
+artistNextBtn.addEventListener("click", playNextArtistSong);
+artistPrevBtn.addEventListener("click", playPrevArtistSong);
 
 if (goBackArtistsBtn) {
   goBackArtistsBtn.addEventListener("click", goBackToArtists);
@@ -48,7 +53,7 @@ async function fetchSongsByArtist(artist) {
     const data = await response.json();
 
     if (data.results.length > 0) {
-      populateArtistSongsTable(data.results);
+      populateArtistSongsTable(data.results, artist.name);
     } else {
       console.log("No songs found for", artist);
     }
@@ -57,12 +62,31 @@ async function fetchSongsByArtist(artist) {
   }
 }
 
-function populateArtistSongsTable(songs) {
+function populateArtistSongsTable(songs, artist) {
   const table = document.querySelector(".artist-songs-list");
   table.innerHTML = "";
 
-  songs.forEach((song, index) => {
+  currentPlaylist = songs.map((song, index) => ({
+    url: song.audio,
+    name: song.name,
+    artist: artist,
+    duration: song.duration,
+    img: song.album_image || "../Assets/alt-song.jpg",
+    index: index,
+  }));
+
+  currentPlaylistTrackIndex = -1;
+
+  currentPlaylist.forEach((track, index) => {
     const row = document.createElement("tr");
+    row.classList.add("artist-song-row");
+    row.dataset.index = index;
+
+    row.dataset.index = index;
+    row.dataset.url = track.url;
+    row.dataset.name = track.name;
+    row.dataset.duration = track.duration;
+    row.dataset.artistName = track.artist;
 
     row.innerHTML = `
       <td class="artist-song-play-btn">
@@ -70,12 +94,10 @@ function populateArtistSongsTable(songs) {
       </td>
       <td class="artist-song-number">${index + 1}</td>
       <td class="artist-song-img">
-        <img src="${
-          song.album_image || "../Assets/alt-song.jpg"
-        }" alt="Album Cover" />
+        <img src="${track.img}" alt="Album Cover" />
       </td>
-      <td class="artist-song-name">${song.name}</td>
-      <td class="artist-song-duration">${formatDuration(song.duration)}</td>
+      <td class="artist-song-name">${track.name}</td>
+      <td class="artist-song-duration">${formatDuration(track.duration)}</td>
     `;
 
     table.appendChild(row);
@@ -89,3 +111,50 @@ function formatDuration(seconds) {
     .toString()
     .padStart(2, "0")}`;
 }
+
+document
+  .querySelector(".artist-songs-list")
+  .addEventListener("click", (event) => {
+    const row = event.target.closest(".artist-song-row");
+    if (!row) return;
+
+    currentPlaylistTrackIndex = parseInt(row.dataset.index, 10);
+    const selectedTrack = currentPlaylist[currentPlaylistTrackIndex];
+    playTrack(selectedTrack);
+  });
+
+function playPortfolioTrack() {
+  if (tableContainer) {
+    tableContainer.addEventListener("click", (event) => {
+      const playBtn = event.target.closest(".artist-song-play-btn");
+      const row = event.target.closest(".artist-song-row");
+
+      if (playBtn && row) {
+        const track = {
+          audio: row.dataset.url,
+          name: row.dataset.name,
+          duration: row.dataset.duration,
+          artist_name: row.dataset.artistName,
+        };
+
+        playTrack(track);
+      }
+    });
+  }
+}
+
+function playNextArtistSong() {
+  if (currentPlaylistTrackIndex < currentPlaylist.length - 1) {
+    currentPlaylistTrackIndex++;
+    playTrack(currentPlaylist[currentPlaylistTrackIndex]);
+  }
+}
+
+function playPrevArtistSong() {
+  if (currentPlaylistTrackIndex > 0) {
+    currentPlaylistTrackIndex--;
+    playTrack(currentPlaylist[currentPlaylistTrackIndex]);
+  }
+}
+
+playPortfolioTrack();

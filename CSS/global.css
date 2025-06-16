@@ -473,7 +473,7 @@ body .navbar .nav-links {
     padding: 0;
   }
 }
-@media screen and (max-height: 1000px) and (min-width: 993px) {
+@media screen and (max-height: 900px) and (min-width: 993px) {
   .cards-container-grid {
     gap: 10px;
   }
@@ -498,7 +498,7 @@ body .navbar .nav-links {
     width: 190px;
   }
 }
-@media screen and (max-height: 1000px) and (min-width: 993px) {
+@media screen and (max-height: 900px) and (min-width: 993px) {
   .artist-card,
   .song-card {
     width: 190px;
@@ -522,7 +522,7 @@ body .navbar .nav-links {
     width: 150px;
   }
 }
-@media screen and (max-height: 1000px) and (min-width: 993px) {
+@media screen and (max-height: 900px) and (min-width: 993px) {
   .artist-card img,
   .song-card img {
     height: 100px;
@@ -540,14 +540,8 @@ body .navbar .nav-links {
 .artist-card p.small-text,
 .song-card p.small-text {
   margin-top: 5px;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   opacity: 0.8;
-}
-@media screen and (max-height: 1000px) and (min-width: 993px) {
-  .artist-card p.small-text,
-  .song-card p.small-text {
-    font-size: 0.7rem;
-  }
 }
 
 .artist-portfolio {
@@ -634,6 +628,9 @@ body .navbar .nav-links {
 }
 .artist-portfolio .artist-songs-wrapper .artist-songs-list tr .artist-song-play-btn {
   width: 15%;
+}
+.artist-portfolio .artist-songs-wrapper .artist-songs-list tr .artist-song-play-btn img {
+  cursor: pointer;
 }
 .artist-portfolio .artist-songs-wrapper .artist-songs-list tr .artist-song-number {
   width: 5%;

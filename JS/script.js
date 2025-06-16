@@ -10,6 +10,9 @@ let currentTrackIndex = -1;
 let songsList = [];
 let songsListIndex = -1;
 
+let currentPlaylist = [];
+let currentplylistTrackIndex = -1;
+
 let currentTrackName = document.getElementById("currentTrackName");
 let currentTrackArtist = document.getElementById("currentTrackArtist");
 let playButton = document.querySelector(".play-button");
@@ -62,6 +65,18 @@ function playTrack(track = null) {
   currentTrackName.innerText = "🎵 Loading ...";
   currentTrackArtist.innerText = "Please wait";
 
+  // Potfolio
+  if (track && currentPlaylist.length > 0) {
+    currentTrack = track;
+    startPlayback();
+    isFetching = false;
+    if (nextTrackBtn) nextTrackBtn.disabled = false;
+    loadingSpinner.style.display = "none";
+    playButton.style.display = "block";
+    return;
+  }
+
+  // Songlist
   if (!track && songsList && songsList.length > 0) {
     currentTrackIndex = 0;
     currentTrack = songsList[0];
@@ -72,6 +87,7 @@ function playTrack(track = null) {
     return;
   }
 
+  // Same
   if (track) {
     currentTrack = track;
     startPlayback();
@@ -84,6 +100,7 @@ function playTrack(track = null) {
     return;
   }
 
+  // Random
   fetch(
     `https://api.jamendo.com/v3.0/tracks/?client_id=${JAMENDO_API_KEY}&format=json&limit=100`
   )
@@ -111,14 +128,17 @@ function playTrack(track = null) {
 function startPlayback() {
   if (!currentTrack) return;
   // check audio
-  console.log("Playing:", currentTrack.name, "by", currentTrack.artist_name);
+  const artistName =
+    currentTrack.artist || currentTrack.artist_name || "Unknown";
 
-  audio = new Audio(currentTrack.audio);
+  console.log("Playing:", currentTrack.name, "by", artistName);
+
+  audio = new Audio(currentTrack.audio || currentTrack.url);
   audio.play();
   isPlaying = true;
 
   currentTrackName.innerText = currentTrack.name;
-  currentTrackArtist.innerText = currentTrack.artist_name;
+  currentTrackArtist.innerText = artistName;
   playImg.src = getPauseButtonImage();
   if (onOff) {
     onOff.innerText = "ON";

@@ -80,6 +80,10 @@
 
         .artist-song-play-btn {
           width: 15%;
+
+          img {
+            cursor: pointer;
+          }
         }
 
         .artist-song-number {

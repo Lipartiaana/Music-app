@@ -22,7 +22,7 @@
     padding: 0;
   }
 
-  @media screen and (max-height: 1000px) and (min-width: 993px) {
+  @media screen and (max-height: 900px) and (min-width: 993px) {
     gap: 10px;
   }
 }
@@ -44,7 +44,7 @@
     width: 190px;
   }
 
-  @media screen and (max-height: 1000px) and (min-width: 993px) {
+  @media screen and (max-height: 900px) and (min-width: 993px) {
     width: 190px;
     height: 155px;
     padding: 10px;
@@ -63,7 +63,7 @@
       width: 150px;
     }
 
-    @media screen and (max-height: 1000px) and (min-width: 993px) {
+    @media screen and (max-height: 900px) and (min-width: 993px) {
       height: 100px;
       width: 140px;
       object-fit: cover;
@@ -77,12 +77,8 @@
 
     &.small-text {
       margin-top: 5px;
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       opacity: 0.8;
-
-      @media screen and (max-height: 1000px) and (min-width: 993px) {
-        font-size: 0.7rem;
-      }
     }
   }
 }
