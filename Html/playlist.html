@@ -24,6 +24,10 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+    <script
+      src="https://kit.fontawesome.com/a117407e76.js"
+      crossorigin="anonymous"
+    ></script>
     <!-- Global CSS -->
     <link rel="stylesheet" href="../CSS/global.css" />
   </head>
@@ -60,8 +64,35 @@
             </li>
           </ul>
         </div>
+        <div class="profile-dropdown">
+          <img class="profile-icon" src="../Assets/user.png" alt="" />
+          <div class="dropdown-menu">
+            <a class="login-btn" id="logInLink"
+              >Log In <i class="fa-solid fa-arrow-right-to-bracket"></i
+            ></a>
+            <a class="register-btn" id="registerLink">Register</a>
+          </div>
+        </div>
       </nav>
     </header>
+    <div class="modal" id="logInModal">
+      <form action="" id="logInForm">
+        <h2>Log In</h2>
+        <input type="text" placeholder="Enter username" />
+        <input type="text" placeholder="Enter password" />
+        <input class="submit" type="submit" />
+      </form>
+    </div>
+    <div class="modal" id="registerModal">
+      <form action="" id="registerForm">
+        <h2>Register</h2>
+        <input type="text" placeholder="Enter username" />
+        <input type="text" placeholder="Enter password" />
+        <input type="text" placeholder="Repeat password" />
+        <p>Account created!</p>
+        <input class="submit" type="submit" />
+      </form>
+    </div>
     <div class="main">
       <div class="pink-side dark with-heading">
         <h3>My Playlist</h3>
@@ -96,5 +127,6 @@
       </div>
     </div>
     <script src="../JS/script.js"></script>
+    <script src="../JS/profile.js"></script>
   </body>
 </html>

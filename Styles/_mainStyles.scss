@@ -59,5 +59,110 @@ body {
         padding: 1rem;
       }
     }
+
+    .profile-dropdown {
+      position: relative;
+      display: inline-block;
+      padding: 0 20px;
+
+      .profile-icon {
+        width: 35px;
+        border-radius: 100%;
+        object-fit: cover;
+        cursor: pointer;
+      }
+
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        right: 0;
+        background-color: $white-color;
+        border: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        padding: 10px;
+        border-radius: 6px;
+        z-index: 1000;
+
+        a {
+          display: block;
+          width: 100%;
+          padding: 10px;
+          margin: 5px 0;
+          color: $gray-color;
+          border: none;
+          cursor: pointer;
+          text-align: left;
+
+          &:hover {
+            color: $pink-color;
+          }
+        }
+      }
+    }
+  }
+
+  .modal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    z-index: 1001;
+    background-color: rgba(53, 53, 53, 0.6);
+
+    form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 1rem;
+      background-color: $white-color;
+      width: 40%;
+      min-width: 250px;
+      padding: 4rem 2rem;
+      max-width: 500px;
+      border-radius: 6px;
+      box-shadow: 3px 4px 4px $gray-color;
+      opacity: 0.85;
+
+      @media screen and (max-width: 992px) {
+        width: 50%;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      input {
+        padding: 0.5rem;
+        width: 300px;
+        border: none;
+        border-radius: 6px;
+        background-color: #b9b9b9;
+
+        &:hover,
+        &:active,
+        &:focus {
+          background-color: $light-gray-color;
+          border: none;
+          outline: none;
+          transition: all 0.5s ease;
+        }
+
+        &.submit {
+          background-color: $dark-pink-color;
+          transition: all 0.5s ease;
+          margin-top: 1rem;
+
+          &:hover {
+            background-color: $pink-color;
+          }
+        }
+
+        @media screen and (max-width: 768px) {
+          width: 90%;
+        }
+      }
+    }
   }
 }
