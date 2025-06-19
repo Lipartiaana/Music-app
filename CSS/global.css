@@ -151,7 +151,17 @@ body .navbar {
   width: 100%;
   display: flex;
   position: absolute;
-  padding: 0.7rem 3rem;
+  padding: 0.7rem 8rem 0.7rem 3rem;
+}
+@media screen and (max-width: 991px) {
+  body .navbar {
+    padding: 0.7rem 3rem 0.7rem 3rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  body .navbar {
+    padding: 0.7rem 2rem 0.7rem 2rem;
+  }
 }
 body .navbar.bg-dark {
   background-color: rgba(0, 0, 0, 0.8) !important;
@@ -187,7 +197,7 @@ body .navbar .nav-links {
   width: 100%;
   display: flex;
   justify-content: end;
-  gap: 20px;
+  gap: 30px;
   padding-top: 0.5rem;
 }
 @media screen and (max-width: 991px) {
@@ -197,19 +207,32 @@ body .navbar .nav-links {
     padding: 1rem;
   }
 }
-body .navbar .profile-dropdown {
-  position: relative;
+body .profile-dropdown {
+  position: absolute;
+  top: 15px;
+  right: 3rem;
   display: inline-block;
   padding: 0 20px;
+  z-index: 2000;
 }
-body .navbar .profile-dropdown .profile-icon {
+@media screen and (max-width: 991px) {
+  body .profile-dropdown {
+    right: 7rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  body .profile-dropdown {
+    right: 5rem;
+  }
+}
+body .profile-dropdown .profile-icon {
   width: 35px;
   border-radius: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   cursor: pointer;
 }
-body .navbar .profile-dropdown .dropdown-menu {
+body .profile-dropdown .dropdown-menu {
   display: none;
   position: absolute;
   right: 0;
@@ -220,7 +243,7 @@ body .navbar .profile-dropdown .dropdown-menu {
   border-radius: 6px;
   z-index: 1000;
 }
-body .navbar .profile-dropdown .dropdown-menu a {
+body .profile-dropdown .dropdown-menu a {
   display: block;
   width: 100%;
   padding: 10px;
@@ -230,7 +253,7 @@ body .navbar .profile-dropdown .dropdown-menu a {
   cursor: pointer;
   text-align: left;
 }
-body .navbar .profile-dropdown .dropdown-menu a:hover {
+body .profile-dropdown .dropdown-menu a:hover {
   color: #ffaaad;
 }
 body .modal {
@@ -261,9 +284,19 @@ body .modal form {
     width: 50%;
   }
 }
+@media screen and (max-width: 500px) {
+  body .modal form {
+    width: 80%;
+  }
+}
 body .modal form h2 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
+}
+body .modal form .register-message,
+body .modal form .log-in-message {
+  display: none;
+  color: green;
 }
 body .modal form input {
   padding: 0.5rem;
@@ -282,6 +315,7 @@ body .modal form input.submit {
   background-color: #e4858d;
   transition: all 0.5s ease;
   margin-top: 1rem;
+  padding: 10px;
 }
 body .modal form input.submit:hover {
   background-color: #ffaaad;

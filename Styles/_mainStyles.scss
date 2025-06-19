@@ -7,7 +7,15 @@ body {
     width: 100%;
     display: flex;
     position: absolute;
-    padding: 0.7rem 3rem;
+    padding: 0.7rem 8rem 0.7rem 3rem;
+
+    @media screen and (max-width: 991px) {
+      padding: 0.7rem 3rem 0.7rem 3rem;
+    }
+
+    @media screen and (max-width: 500px) {
+      padding: 0.7rem 2rem 0.7rem 2rem;
+    }
 
     &.bg-dark {
       background-color: rgba(0, 0, 0, 0.8) !important;
@@ -50,7 +58,7 @@ body {
       width: 100%;
       display: flex;
       justify-content: end;
-      gap: 20px;
+      gap: 30px;
       padding-top: 0.5rem;
 
       @media screen and (max-width: 991px) {
@@ -59,48 +67,58 @@ body {
         padding: 1rem;
       }
     }
+  }
 
-    .profile-dropdown {
-      position: relative;
-      display: inline-block;
-      padding: 0 20px;
+  .profile-dropdown {
+    position: absolute;
+    top: 15px;
+    right: 3rem;
+    display: inline-block;
+    padding: 0 20px;
+    z-index: 2000;
 
-      .profile-icon {
-        width: 35px;
-        border-radius: 100%;
-        object-fit: cover;
-        cursor: pointer;
-      }
+    @media screen and (max-width: 991px) {
+      right: 7rem;
+    }
 
-      .dropdown-menu {
-        display: none;
-        position: absolute;
-        right: 0;
-        background-color: $white-color;
-        border: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    @media screen and (max-width: 500px) {
+      right: 5rem;
+    }
+
+    .profile-icon {
+      width: 35px;
+      border-radius: 100%;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: $white-color;
+      border: none;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      padding: 10px;
+      border-radius: 6px;
+      z-index: 1000;
+
+      a {
+        display: block;
+        width: 100%;
         padding: 10px;
-        border-radius: 6px;
-        z-index: 1000;
+        margin: 5px 0;
+        color: $gray-color;
+        border: none;
+        cursor: pointer;
+        text-align: left;
 
-        a {
-          display: block;
-          width: 100%;
-          padding: 10px;
-          margin: 5px 0;
-          color: $gray-color;
-          border: none;
-          cursor: pointer;
-          text-align: left;
-
-          &:hover {
-            color: $pink-color;
-          }
+        &:hover {
+          color: $pink-color;
         }
       }
     }
   }
-
   .modal {
     display: none;
     justify-content: center;
@@ -128,9 +146,19 @@ body {
         width: 50%;
       }
 
+      @media screen and (max-width: 500px) {
+        width: 80%;
+      }
+
       h2 {
         font-size: 1.5rem;
         margin-bottom: 1rem;
+      }
+
+      .register-message,
+      .log-in-message {
+        display: none;
+        color: green;
       }
 
       input {
@@ -153,6 +181,7 @@ body {
           background-color: $dark-pink-color;
           transition: all 0.5s ease;
           margin-top: 1rem;
+          padding: 10px;
 
           &:hover {
             background-color: $pink-color;

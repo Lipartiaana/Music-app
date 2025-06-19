@@ -33,22 +33,24 @@ if (prevTrackBtn) {
   prevTrackBtn.addEventListener("click", playPrev);
 }
 
-playButton.addEventListener("click", () => {
-  if (!audio) {
-    if (songsList && songsList.length > 0) {
-      songsListIndex = 0;
-      playTrack(songsList[0]);
+if (playButton) {
+  playButton.addEventListener("click", () => {
+    if (!audio) {
+      if (songsList && songsList.length > 0) {
+        songsListIndex = 0;
+        playTrack(songsList[0]);
+      } else {
+        playTrack(); // fallback to random if no song list
+      }
+      if (onOff) {
+        onOff.innerText = "ON";
+        pinkSide.classList.remove("dark");
+      }
     } else {
-      playTrack(); // fallback to random if no song list
+      togglePlayback();
     }
-    if (onOff) {
-      onOff.innerText = "ON";
-      pinkSide.classList.remove("dark");
-    }
-  } else {
-    togglePlayback();
-  }
-});
+  });
+}
 
 function playTrack(track = null) {
   if (isFetching) return;

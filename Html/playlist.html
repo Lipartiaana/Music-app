@@ -78,18 +78,29 @@
     <div class="modal" id="logInModal">
       <form action="" id="logInForm">
         <h2>Log In</h2>
-        <input type="text" placeholder="Enter username" />
-        <input type="text" placeholder="Enter password" />
+        <input type="text" placeholder="Enter username" required />
+        <input type="text" placeholder="Enter password" required />
+        <p class="log-in-message">Invalid username or password.</p>
         <input class="submit" type="submit" />
       </form>
     </div>
     <div class="modal" id="registerModal">
       <form action="" id="registerForm">
         <h2>Register</h2>
-        <input type="text" placeholder="Enter username" />
-        <input type="text" placeholder="Enter password" />
-        <input type="text" placeholder="Repeat password" />
-        <p>Account created!</p>
+        <input type="text" placeholder="Enter username" required />
+        <input
+          type="text"
+          placeholder="Enter password"
+          required
+          minlength="6"
+        />
+        <input
+          type="text"
+          placeholder="Repeat password"
+          required
+          minlength="6"
+        />
+        <p class="register-message">Account created!</p>
         <input class="submit" type="submit" />
       </form>
     </div>
@@ -128,5 +139,7 @@
     </div>
     <script src="../JS/script.js"></script>
     <script src="../JS/profile.js"></script>
+    <script src="../JS/register.js"></script>
+    <script src="../JS/logIn.js"></script>
   </body>
 </html>
