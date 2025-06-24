@@ -136,6 +136,11 @@ function startPlayback() {
   console.log("Playing:", currentTrack.name, "by", artistName);
 
   audio = new Audio(currentTrack.audio || currentTrack.url);
+
+  if (currentTrack?.url) {
+    updatePlayerHeartIcon(currentTrack.url);
+  }
+
   audio.play();
   isPlaying = true;
 
@@ -176,6 +181,36 @@ function togglePlayback() {
       pinkSide.classList.remove("dark");
     }
     playImg.src = getPauseButtonImage();
+  }
+}
+
+function updatePlayerHeartIcon(songUrl) {
+  const heartIcon = document.getElementById("playerHeart");
+  if (!heartIcon) return;
+
+  const loggedInUser = localStorage.getItem("loggedInUser");
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+  const user = users.find((u) => u.username === loggedInUser);
+  const likedSongs = user?.playlists?.["Liked Songs"] || [];
+
+  const getTrackIdFromUrl = (url) => {
+    const match = url.match(/trackid=(\d+)/);
+    return match ? match[1] : null;
+  };
+
+  const currentTrackId = getTrackIdFromUrl(songUrl);
+  const isLiked = likedSongs.some(
+    (likedUrl) => getTrackIdFromUrl(likedUrl) === currentTrackId
+  );
+
+  heartIcon.dataset.songid = songUrl;
+
+  if (isLiked) {
+    heartIcon.classList.add("liked", "fa-solid");
+    heartIcon.classList.remove("fa-regular");
+  } else {
+    heartIcon.classList.remove("liked", "fa-solid");
+    heartIcon.classList.add("fa-regular");
   }
 }
 

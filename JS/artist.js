@@ -77,11 +77,24 @@ function populateArtistSongsTable(songs, artist) {
 
   currentPlaylistTrackIndex = -1;
 
+  const loggedInUser = localStorage.getItem("loggedInUser");
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+  const user = users.find((u) => u.username === loggedInUser);
+  const likedSongs = user?.playlists?.["Liked Songs"] || [];
+
+  const getTrackIdFromUrl = (url) => {
+    const match = url.match(/trackid=(\d+)/);
+    return match ? match[1] : null;
+  };
+
   currentPlaylist.forEach((track, index) => {
+    const trackId = getTrackIdFromUrl(track.url);
+    const isLiked = likedSongs.some(
+      (likedUrl) => getTrackIdFromUrl(likedUrl) === trackId
+    );
+
     const row = document.createElement("tr");
     row.classList.add("artist-song-row");
-    row.dataset.index = index;
-
     row.dataset.index = index;
     row.dataset.url = track.url;
     row.dataset.name = track.name;
@@ -97,6 +110,11 @@ function populateArtistSongsTable(songs, artist) {
         <img src="${track.img}" alt="Album Cover" />
       </td>
       <td class="artist-song-name">${track.name}</td>
+      <td class="playlist-dropdown-wrapper">
+        <i class="fa-heart ${isLiked ? "fa-solid liked" : "fa-regular"}"
+           data-songid="${track.url}" data-index="${index}"></i>
+        <div class="playlist-dropdown" style="display: none;"></div>
+      </td>
       <td class="artist-song-duration">${formatDuration(track.duration)}</td>
     `;
 

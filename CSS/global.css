@@ -325,6 +325,36 @@ body .modal form input.submit:hover {
     width: 90%;
   }
 }
+body .fa-heart.liked {
+  color: red;
+}
+body .playlist-dropdown-wrapper {
+  position: relative;
+}
+body .playlist-dropdown-wrapper i {
+  cursor: pointer;
+}
+body .playlist-dropdown-wrapper .playlist-dropdown {
+  position: absolute;
+  top: 25px;
+  left: 0;
+  background: white;
+  color: black;
+  border: 1px solid #ccc;
+  z-index: 999;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  border-radius: 4px;
+  min-width: 120px;
+}
+body .playlist-dropdown-wrapper .playlist-dropdown p {
+  margin: 0;
+  padding: 5px;
+  cursor: pointer;
+}
+body .playlist-dropdown-wrapper .playlist-dropdown p:hover {
+  background-color: #eee;
+}
 
 .main {
   display: flex;
@@ -496,6 +526,10 @@ body .modal form input.submit:hover {
   .main .blue-side .player p {
     font-size: 1rem;
   }
+}
+.main .blue-side .player .playlist-dropdown p {
+  font-size: 1rem;
+  padding: 0.2rem;
 }
 .main .blue-side .player .music-waves {
   width: 500px;
