@@ -1,0 +1,192 @@
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding: 50px 20px;
+
+  @media screen and (max-width: 600px) {
+    padding: 10px;
+  }
+
+  .user-bio {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 700px;
+    margin: 0 auto;
+
+    @media screen and (max-width: 500px) {
+      width: 100%;
+    }
+
+    .user-profile-img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 100%;
+
+      @media screen and (max-width: 768px) {
+        width: 180px;
+        height: 180px;
+      }
+
+      @media screen and (max-width: 600px) {
+        width: 150px;
+        height: 150px;
+      }
+
+      @media screen and (max-width: 500px) {
+        width: 100px;
+        height: 100px;
+      }
+    }
+
+    .user-bio-text {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      @media screen and (max-width: 500px) {
+        gap: 10px;
+      }
+
+      @media screen and (max-height: 700px) {
+        gap: 10px;
+      }
+
+      p {
+        width: 300px;
+        background-color: rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        border-radius: 6px;
+        color: $white-color;
+        margin-left: 0.2rem;
+
+        @media screen and (max-width: 600px) {
+          width: 250px;
+          font-size: 0.8rem;
+        }
+
+        @media screen and (max-width: 500px) {
+          width: 220px;
+        }
+
+        @media screen and (max-width: 380px) {
+          width: 100%;
+        }
+      }
+
+      a {
+        width: 200px;
+        padding: 10px;
+        border-radius: 20px;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: $white-color;
+        text-align: center;
+        transition: 0.3s ease;
+
+        @media screen and (max-width: 600px) {
+          width: 140px;
+          font-size: 0.8rem;
+        }
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.6);
+        }
+      }
+
+      .user-name {
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        font-weight: 900;
+
+        @media screen and (max-width: 600px) {
+          font-size: 1rem;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  .user-playlists-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    padding: 70px 20px;
+    width: 90%;
+    margin: 0 auto;
+
+    @media screen and (max-width: 992px) {
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    @media screen and (max-width: 768px) {
+      flex-wrap: wrap;
+      padding: 30px 20px;
+    }
+
+    @media screen and (max-width: 600px) {
+      gap: 0.8rem;
+      padding: 20px 10px;
+    }
+
+    @media screen and (max-height: 700px) {
+      padding: 20px 10px;
+    }
+
+    .user-playlist-info-block {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width: 210px;
+      height: 100px;
+      border: 10px double $pink-color;
+      padding: 2rem 1rem;
+      background-color: rgba(0, 0, 0, 0.8);
+      border-radius: 20px;
+      color: $white-color;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+
+      @media screen and (max-width: 600px) {
+        font-size: 1rem;
+        width: 180px;
+        height: 90px;
+        padding: 1rem 0.5rem;
+      }
+
+      @media screen and (max-height: 700px) {
+        font-size: 0.8rem;
+        width: 150px;
+        height: 80px;
+        padding: 0.5rem 0.2rem;
+      }
+
+      span {
+        font-size: 1.5rem;
+        font-weight: 900;
+        display: block;
+        text-align: center;
+        margin-top: 0.5rem;
+
+        @media screen and (max-width: 600px) {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+
+  .go-to-playlists {
+    width: 90%;
+    max-width: 750px;
+    margin: 0 auto;
+    a {
+      color: $white-color;
+      font-size: 1.2rem;
+    }
+  }
+}

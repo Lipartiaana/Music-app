@@ -75,11 +75,99 @@
         </div>
       </nav>
     </header>
-    <div class="main">
-      <div class="pink-side dark with-heading">
-        <h3>My profile</h3>
+    <div class="modal" id="changePassModal">
+      <form action="" id="changePassForm">
+        <h2>Change Password</h2>
+        <input
+          type="text"
+          id="currentPassword"
+          placeholder="Enter current password"
+          required
+        />
+        <input
+          type="text"
+          id="newPassword"
+          placeholder="Enter new password"
+          required
+        />
+        <input
+          type="text"
+          id="confirmNewPassword"
+          placeholder="Confirm new password"
+          required
+        />
+        <p class="change-password-message"></p>
+        <input class="submit" type="submit" value="Change" />
+      </form>
+    </div>
+    <div class="modal" id="editProfileModal">
+      <form action="" id="editProfileForm">
+        <h2>Edit Profile</h2>
+        <label>Profile Image</label>
+        <input type="file" id="profileImageInput" accept="image/*" />
+        <img
+          id="profileImagePreview"
+          src="../Assets/user.png"
+          alt="Preview"
+          style="
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-top: 10px;
+          "
+        />
+        <label>Username</label>
+        <input type="text" name="username" placeholder="Enter new username" />
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Enter email address" />
+        <p class="edit-message"></p>
+        <input class="submit" type="submit" value="Save changes" />
+      </form>
+    </div>
+    <div id="deleteModal" class="modal" style="display: none">
+      <div class="modal-content">
+        <h3>Are you sure you want to delete your profile?</h3>
+        <div class="modal-buttons">
+          <button id="confirmDelete" class="danger-btn">Yes, delete</button>
+          <button id="cancelDelete">Cancel</button>
+        </div>
       </div>
-      <div class="blue-side"></div>
+    </div>
+    <div class="main">
+      <div class="pink-side dark with-heading profile-page">
+        <h3>My profile</h3>
+        <div class="user-profile">
+          <div class="user-bio">
+            <img class="user-profile-img" src="../Assets/user.png" alt="" />
+            <div class="user-bio-text">
+              <p class="user-name">User Name</p>
+              <p class="date-created">Date created: 17.05.2025</p>
+              <p class="email">Email: example@gmail.com</p>
+              <a href="#change-password">Change password</a>
+              <a href="#edit-profile">Edit profile</a>
+              <a href="#delete-user" class="delete-profile-link"
+                >Delete profile</a
+              >
+            </div>
+          </div>
+          <div class="user-playlists-info">
+            <div class="user-playlist-info-block">
+              <p>Total playlists <span>15</span></p>
+            </div>
+            <div class="user-playlist-info-block">
+              <p>Liked songs <span>17</span></p>
+            </div>
+            <div class="user-playlist-info-block">
+              <p>All saved songs <span>120</span></p>
+            </div>
+          </div>
+          <div class="go-to-playlists">
+            <a href="./playlist.html"
+              ><span class="arrow">&larr;</span> My playlists</a
+            >
+          </div>
+        </div>
+      </div>
     </div>
     <script src="../JS/script.js"></script>
     <script src="../JS/profile.js"></script>

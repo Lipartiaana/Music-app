@@ -87,6 +87,7 @@ body {
 
     .profile-icon {
       width: 35px;
+      height: 35px;
       border-radius: 100%;
       object-fit: cover;
       cursor: pointer;
@@ -127,7 +128,8 @@ body {
     z-index: 1001;
     background-color: rgba(53, 53, 53, 0.6);
 
-    form {
+    form,
+    .modal-content {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -155,10 +157,39 @@ body {
         margin-bottom: 1rem;
       }
 
+      h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
       .register-message,
       .log-in-message {
         display: none;
         color: green;
+      }
+
+      button {
+        background-color: $dark-pink-color;
+        transition: all 0.5s ease;
+        margin-top: 1rem;
+        padding: 10px;
+        border: none;
+        border-radius: 6px;
+        outline: none;
+
+        &:hover {
+          background-color: $pink-color;
+        }
+      }
+
+      label {
+        width: 300px;
+        text-align: left;
+
+        @media screen and (max-width: 768px) {
+          width: 90%;
+        }
       }
 
       input {

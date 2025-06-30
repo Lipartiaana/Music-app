@@ -31,7 +31,16 @@ if (registerForm) {
       return;
     }
 
-    users.push({ username, password });
+    users.push({
+      username,
+      password,
+      dateCreated: new Date().toLocaleDateString("en-GB"),
+      email: "",
+      image: "",
+      playlists: {
+        "Liked Songs": [],
+      },
+    });
 
     localStorage.setItem("users", JSON.stringify(users));
 
